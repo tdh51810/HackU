@@ -1,0 +1,8 @@
+import requests
+
+
+place_id = "060010"
+
+response = requests.post("http://weather.livedoor.com/forecast/webservice/json/v1?city="+place_id)
+
+print(response)
