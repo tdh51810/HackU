@@ -19,7 +19,8 @@ def insert_slot(message, userdata):
 	# それぞれのスロットに、対応するユーザ情報の値を挿入する
 	for slot in slots:
 		if(slot == "住所"):
-			message = message.replace("<"+slot+">", userdata[slot].split()[2])
+			message = message.replace("<住所(都道府県)>", userdata[slot].split()[0])
+			message = message.replace("<住所(詳細地域)>", userdata[slot].split()[2])
 		else:
 			message = message.replace("<"+slot+">", userdata[slot])
 	# 結果を返す

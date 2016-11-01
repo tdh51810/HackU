@@ -16,7 +16,7 @@ while(text is None):
 		# 注意報・警報データを取得し、存在するならテキストを生成
 		warning = get_warning.get_warning(userdata)
 		if(len(warning) > 0):
-			text = "私が住んでいる<住所>で"+ "と".join(warning) + "が\n発令されているので、念のため休ませていただきます。"
+			text = "私が住んでいる<住所(都道府県)>で"+ "と".join(warning) + "が\n発令されているので、念のため休ませていただきます。"
 
 	# 定型文による理由生成(仮)
 	elif(algorithm == 2):
