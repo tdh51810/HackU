@@ -18,6 +18,6 @@ def get_warning(userdata):
 
 if(__name__ == "__main__"):
 	# ユーザ情報を読み込む
-	userdata = eval(open("user_profile/user_info.txt","r").read())
+	userdata = eval(open("../data/user_profile/user_info.txt","r").read())
 	# 関数を呼び出す
 	print(get_warning(userdata))

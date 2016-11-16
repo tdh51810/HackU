@@ -29,7 +29,7 @@ def insert_slot(message, userdata):
 # 休みますメッセージを投稿するためのメイン関数
 def post_RestMessage(text, userdata):
 	# templateフォルダから欠勤メッセージのテンプレートを検索・ランダムに選択・読み込み
-	templates = list(glob.glob("template/*.txt"))
+	templates = list(glob.glob("../data/template/*.txt"))
 	template = random.choice(templates)
 	message = open(template,"r").read()
 	# テンプレートに欠勤テキストを挿入
