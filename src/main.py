@@ -3,14 +3,13 @@ import get_warning
 import postSlack
 
 # ユーザ情報を読み込む
-userdata = eval(open("user_profile/user_info.txt","r").read())
+userdata = eval(open("../data/user_profile/user_info.txt","r").read())
 
 # 理由テキストの生成に成功するまでループする
 text = None
 while(text is None):
 	# 理由生成アルゴリズムをランダムに選択
 	algorithm = random.randint(1,2)
-
 	# 注意報・警報データを用いた理由生成
 	if(algorithm == 1):
 		# 注意報・警報データを取得し、存在するならテキストを生成
