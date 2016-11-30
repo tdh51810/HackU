@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ユーザ登録画面</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Style-Type" content="text/styles" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <link type="text/css" rel="stylesheet" href="./exValidation/styles/style.css" />
+　　　　    <link rel="stylesheet" type="text/css" href="index.css">
+        <script>
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-4011945-3']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./exValidation/scripts/jquery.easing.js"></script>
+        <script type="text/javascript" src="./exValidation/scripts/jQselectable.js"></script>
+        <script type="text/javascript" src="./exValidation/scripts/exvalidation.js"></script>
+        <script type="text/javascript" src="./exValidation/scripts/exchecker-ja.js"></script>
+        <script type="text/javascript">
+        var validation = $("form")
+                .submit(function() {
+                        return false;
+                })
+                .exValidation({
+                        firstValidate: true,
+                        rules: {
+                                name: "chkrequired",
+                                kana: "chkrequired chkkatakana",
+                                email: "chkrequired chkemail chkhankaku chkgroup",
+                                email3: "chkrequired chkemail chkhankaku",
+                                pass: "chkrequired chkmin6 chkmax12",
+                                repass: "chkrequired chkretype-pass",
+                                url: "chkrequired chkurl",
+                                radio: "chkradio",
+                                street: "chkgroupt chkrequired",
+                                checkbox: "chkcheckbox",
+                                pref: "chkselect",
+                                file: "chkfile"
+                        },
+                        stepValidation: true
+                });
+        var selectable = $('#pref').selectable({
+                callback: function() {
+                        validation.laterCall('#pref');
+                }
+        });
+      </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+　　　　<link rel="stylesheet" type="text/css" href="./minimalect/jquery.minimalect.css" media="screen" />
+    <script src="./minimalect/jquery.minimalect.js"></script>    <meta charset="utf-8">
+    <script type="text/javascript">
+        $(function() {
+           $("select").minimalect({ theme: "bubble", placeholder: "値を選択してください。"});
+        });
+    </script>
+  </head>
+  <body>
+    <header>
+    <div id ="logo"><img src="./image/logo.png" width ="80px" height="80px" style="float:left;"></div>
+　　　　<h1 id="title" >ご注文はお休みですか？（仮）</h1>
+    </header>
+   <div id="main" style="clear:both;">
+   <form action="./info_check.php" method="post">
+       <fieldset>
+         <h3>以下のそれぞれの項目について、あなたの家族や親戚の人数を回答してください。</h3>
+         <p class="attention">*は必須項目です</p>
+
+         <table>
+           <tbody>
+             <tr>
+                <th>あなたの苗字<span>*</span></th>
+                   <td><input type="text" id="name" name="username" value="" required /></td>
+             </tr>
+
+             <tr>
+                <th>性別<span>*</span></th>
+                   <td><span id="radio">
+                         <label for="male"><input type="radio" id="male" name="sex" value="男" checked/>男性</label>
+                         <label for="female"><input type="radio" id="female" name="sex" value="女" />女性</label>
+                       </span>
+                   </td>
+             </tr>
+　
+             <tr>
+                <th>お住まいの都道府県<span>*</span></th>
+                <td>
+                    <select id="pref" name="address" class="selectable" required> 
+                      <optgroup label="北海道"> 
+                       <option value="道北 01a 宗谷北部" selected>道北</option>
+                           <option value="道央 01b 石狩北部">道央</option>
+                           <option value="道東 01c 網走西部">道東</option>
+                           <option value="道南 01d 胆振西部">道南</option>
+                     </optgroup> 
+                      <optgroup label="東北地方">
+                           <option value="青森 02 東青津軽">青森</option>
+                           <option value="岩手 03 盛岡地域">岩手</option>
+                           <option value="宮城 04 東部仙台">宮城</option>
+                           <option value="秋田 05 秋田中央地域">秋田</option>
+                           <option value="山形 06 東南村山">山形</option>
+                           <option value="福島 07 中通り北部">福島</option>
+                      </optgroup> 
+                      <optgroup label="関東地方">
+                           <option value="茨城 08 県央地域">茨城</option>
+                           <option value="栃木 09 県央部">栃木</option>
+                           <option value="群馬 10 前橋・桐生地域">群馬</option>
+                           <option value="埼玉 11 南中部">埼玉</option>
+                           <option value="千葉 12 千葉中央">千葉</option>
+                           <option value="東京 13 23区西部">東京</option>
+                           <option value="神奈川 14 横浜・川崎">神奈川</option>
+                      </optgroup> 
+                      <optgroup label="中部地方">
+                           <option value="新潟 15 新潟地域">新潟</option>
+                           <option value="富山 16 東部南">富山</option>
+                           <option value="石川 17 加賀北部">石川</option>
+                           <option value="福井 18 嶺北北部">福井</option>
+                           <option value="山梨 19 中北地域">山梨</option>
+                           <option value="長野 20 長野地域">長野</option>
+                           <option value="岐阜 21 岐阜・西濃">岐阜</option>
+                           <option value="静岡 22 中部南">静岡</option>
+                           <option value="愛知 23 尾張東部">愛知</option>
+                      </optgroup> 
+                      <optgroup label="近畿地方">
+                           <option value="三重 24 中部">三重</option>
+                           <option value="滋賀 25 近江南部">滋賀</option>
+                           <option value="京都 26 京都・亀岡">京都</option>
+                           <option value="大阪 27 大阪市">大阪</option>
+                           <option value="兵庫 28 阪神">兵庫</option>
+                           <option value="奈良 29 北西部">奈良</option>
+                           <option value="和歌山 30 紀北">和歌山</option>
+                      </optgroup> 
+                      <optgroup label="中四国地方">
+                           <option value="鳥取 31 鳥取地区">鳥取</option>
+                           <option value="島根 32 松江地区">島根</option>
+                           <option value="岡山 33 岡山地域"></option>
+                           <option value="広島 34 広島・呉">広島</option>
+                           <option value="山口 35 下関">山口</option>
+                           <option value="徳島 36 徳島・鳴門">徳島</option>
+                           <option value="香川 37 高松地域">香川</option>
+                           <option value="愛媛 38 中予">愛媛</option>
+                           <option value="高知 39 高知中央">高知</option>
+                      </optgroup> 
+                      <optgroup label="九州地方・沖縄"> 
+                           <option value="福岡 40 福岡地方">福岡</option>
+                           <option value="佐賀 41 佐賀多久地区">佐賀</option>
+                           <option value="長崎 42 島原半島">長崎</option>
+                           <option value="熊本 43 熊本市">熊本</option>
+                           <option value="大分 44 中部">大分</option>
+                           <option value="宮崎 45 宮崎地区">宮崎</option>
+                           <option value="鹿児島 46 鹿児島・日置">鹿児島</option>
+                           <option value="沖縄 47 南部">沖縄</option>
+                      </optgroup> 
+                   </select> 
+                </td>
+             </tr>
+            <tr>
+                <th>配偶者の人数<span>*</span></th>
+                   <td><select id="spouse" name="spouse" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>子どもの人数<span>*</span></th>
+                   <td><select id="children" name="chidlren" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                           <option value="6">6名</option>
+                       </select> 
+                   </td>
+            </tr>
+           <tr>
+                <th>父親の人数<span>*</span></th>
+                   <td><select id="father" name="father" class="selectable" required> 
+                           <option value="0">いない</option>
+                           <option value="1" selected>1名</option>
+                           <option value="2">2名</option>
+                       </select> 
+                   </td>
+            </tr>
+           <tr>
+                <th>母親の人数<span>*</span></th>
+                   <td><select id="mother" name="mother" class="selectable" required> 
+                           <option value="0">いない</option>
+                           <option value="1" selected>1名</option>
+                           <option value="2">2名</option>
+                       </select> 
+                   </td>
+            </tr>
+           <tr>
+                <th>祖父の人数<span>*</span></th>
+                   <td><select id="g_father" name="g_father" class="selectable" required> 
+                           <option value="0">いない</option>
+                           <option value="1">1名</option>
+                           <option value="2" selected>2名</option>
+                       </select> 
+                   </td>
+            </tr>
+           <tr>
+                <th>祖母の人数<span>*</span></th>
+                   <td><select id="g_mother" name="g_mother" class="selectable" required> 
+                           <option value="0">いない</option>
+                           <option value="1">1名</option>
+                           <option value="2" selected>2名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>兄の人数<span>*</span></th>
+                   <td><select id="brother1" name="brother1" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>姉の人数<span>*</span></th>
+                   <td><select id="sister1" name="sister1" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>弟の人数<span>*</span></th>
+                   <td><select id="brother2" name="brother2" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>妹の人数<span>*</span></th>
+                   <td><select id="sister2" name="sister2" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>叔父の人数<span>*</span></th>
+                   <td><select id="uncle" name="uncle" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>叔母の人数<span>*</span></th>
+                   <td><select id="aunt" name="aunt" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>いとこの人数<span>*</span></th>
+                   <td><select id="cousin" name="cousin" class="selectable" required> 
+                           <option value="0" selected>いない</option>
+                           <option value="1">1名</option>
+                           <option value="2">2名</option>
+                           <option value="3">3名</option>
+                           <option value="4">4名</option>
+                           <option value="5">5名</option>
+                           <option value="6">6名</option>
+                           <option value="7">7名</option>
+                           <option value="8">8名</option>
+                           <option value="9">9名</option>
+                       </select> 
+                   </td>
+            </tr>
+            <tr>
+                <th>ペットの有無<span>*</span></th>
+                   <td><span id="radio">
+                         <label for="yes"><input type="radio" id="yes" name="pet" value="1" checked/>いる</label>
+                         <label for="no"><input type="radio" id="no" name="pet" value="0" />いない</label>
+                       </span>
+                   </td>
+            </tr>
+           </tbody>
+         </table>
+         <br>
+　　　　　　　　　<h3>次に投稿を送るための質問を行います。以下のそれぞれの項目について回答してください。</h3>
+         <p class="attention">*は必須項目です</p>
+
+         <table>
+           <tbody>
+            <tr>
+                <th>Slack APIトークンID<span>*</span></th>
+                   <td><input type="text" id="slacktoken" name="slacktoken" value="" required /></td>
+            </tr>
+            <tr>
+                <th>送信先チャンネル名<span>*</span></th>
+                   <td><input type="text" id="slackchannel" name="slackchannel" value="#" required /></td>
+            </tr>
+            <tr>
+                <th>あなたの所属<span>*</span></th>
+                   <td><input type="text" id="slack_toname" name="slack_toname" value="" required /></td>
+             </tr>
+            <tr>
+                <th>通勤時間<span>*</span></th>
+                   <td><select id="time" name="time" class="selectable" required> 
+                           <option value="0-10" selected>0~10分未満</option>
+                           <option value="10-20">10~20分未満</option>
+                           <option value="20-30">20~30分未満</option>
+                           <option value="30-40">30~40分未満</option>
+                           <option value="40-50">40~50分未満</option>
+                           <option value="50-60">50~60分未満</option>
+                           <option value="60-">60分以上</option>
+                       </select> 
+                   </td>
+            </tr>
+
+           </tbody>
+         </table>
+         <div id="button">
+           <input type="submit"  value="" style="background:url('./image/send_after.png');width:79px;height:31px;border:0px solid;cursor:pointer;" onmouseover="this.style.background='url(./image/send_before.png)';" onmouseout="this.style.background='url(./image/send_after.png)';" />
+           <input type="reset" value="" style="background:url('./image/reset_after.png');width:79px;height:31px;border:0px solid;cursor:pointer;" onmouseover="this.style.background='url(./image/reset_before.png)';" onmouseout="this.style.background='url(./image/reset_after.png)';" />
+         </div>
+       </fieldset>
+   </form> 
+  </div>
+
+<div id="footer">
+Copyright &copy 山形大学工学部情報科学科井上研究室 All Rights Reserved.
+</div>
+  </body>
+</html>
+
