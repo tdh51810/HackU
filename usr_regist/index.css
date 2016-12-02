@@ -1,0 +1,88 @@
+body{
+  width:auto;
+  background-image: url("./image/background.png");
+  background-size:100% auto;
+}
+
+header{
+  width:800px;
+  height: 100px;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+#main{
+  width:800px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:30px;
+  background-color:#FFFFFF;
+  padding:20px 0 20px 0;
+}
+
+
+#logo{
+ float:left;
+ background-color:#FFFFFF;
+ width:80px;
+ height:80px;
+ margin: 10px 20px 20px 0px; 
+}
+
+
+#title{
+  width:400px;
+  background-color: rgba(0,0,0,0);
+  margin:30px auto 0 auto;
+  color: #82584A;
+}
+
+h3{
+  width:600px;
+  margin:0 auto 0 auto;
+}
+
+#button{
+  width:170px;
+  margin:20px auto 0px auto;
+}
+
+#footer{
+  height:34px;
+  width:100%;
+  background-color: rgba(0,0,0,0);
+  padding:16px 10px 4px 10px;
+  font-size:16px;
+  text-align:right;
+}
+
+.text, textarea, .dropdown{
+    border:1px solid #777;
+    padding: 5px;
+    color: #999;
+    background: #fff;
+    border-radius: 5px;
+     
+    /* Webkit */
+    background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#eee),
+        to(#fff)
+        );
+    -webkit-border-radius: 5px;
+     
+    /* Firefox */
+    background: -moz-linear-gradient(
+        top,
+        #eee,
+        #fff
+        );
+    -moz-border-radius: 5px;
+     
+    /* IE */
+    filter:progid:DXImageTransform.Microsoft.gradient
+        (startColorstr=#ffeeeeee,endColorstr=#ffffffff);
+    zoom: 1;
+}

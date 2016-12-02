@@ -313,6 +313,10 @@
                        </span>
                    </td>
             </tr>
+            <tr>
+                <th>残り有給休暇数<font color="red">(半角数字)</font><span>*</span></th>
+                   <td><input type="text" id="holiday" name="holiday" value="" required /></td>
+            </tr>
            </tbody>
          </table>
          <br>
@@ -322,31 +326,17 @@
          <table>
            <tbody>
             <tr>
+                <th>Slack ユーザID<span>*</span></th>
+                   <td><input type="text" id="userid" name="userid" value="@" required /></td>
+            </tr>
+            <tr>
                 <th>Slack APIトークンID<span>*</span></th>
-                   <td><input type="text" id="slacktoken" name="slacktoken" value="" required /></td>
+                   <td><input type="text" id="slacktoken" name="slacktoken" value="xoxp-" required /></td>
             </tr>
             <tr>
                 <th>送信先チャンネル名<span>*</span></th>
                    <td><input type="text" id="slackchannel" name="slackchannel" value="#" required /></td>
             </tr>
-            <tr>
-                <th>あなたの所属<span>*</span></th>
-                   <td><input type="text" id="slack_toname" name="slack_toname" value="" required /></td>
-             </tr>
-            <tr>
-                <th>通勤時間<span>*</span></th>
-                   <td><select id="time" name="time" class="selectable" required> 
-                           <option value="0-10" selected>0~10分未満</option>
-                           <option value="10-20">10~20分未満</option>
-                           <option value="20-30">20~30分未満</option>
-                           <option value="30-40">30~40分未満</option>
-                           <option value="40-50">40~50分未満</option>
-                           <option value="50-60">50~60分未満</option>
-                           <option value="60-">60分以上</option>
-                       </select> 
-                   </td>
-            </tr>
-
            </tbody>
          </table>
          <div id="button">
