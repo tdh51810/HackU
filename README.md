@@ -12,10 +12,10 @@
 ## 仕様
 - ~~アプリのボタン(MyThings) or RasberyPi+物理ボタンで作成~~
 
-- MESH -> IFTTT -> Dropbox -> スクリプト -> Slack
+- ~~MESH -> IFTTT -> Dropbox -> スクリプト -> Slack~~
+- myThings -> Dropbox -> スクリプト -> Slack
 =======
 - MESH(たのしい)　or bttn(未確認)
-MESH はSDKでMyThingsと連携可能, 今はIFTTT, webhook(?)で直接IFTTTのトリガを受け取れるかも
 
 - 構成パーツ
  - __理由生成部__, __文面整形部__, __プロフィール登録部__, __Slack投稿部__
@@ -50,5 +50,6 @@ MESH はSDKでMyThingsと連携可能, 今はIFTTT, webhook(?)で直接IFTTTの�
 ## やること
 - 関数間のデータフローの確認
 - 参照データの保存先の確認
+- プログラム保存先の確認
 - 機能実装
-- 投稿先のスラックチャンネル
+- スラックの投稿先
