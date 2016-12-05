@@ -1,0 +1,7 @@
+自身の風邪:own_cold
+子供の風邪:child_clod
+天気:weather
+親戚の不幸:relative
+ネタ:twitter
+緊急の休み(bttn赤):red
+遅刻(bttn青):blue
