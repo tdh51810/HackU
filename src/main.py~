@@ -14,7 +14,9 @@ while(text is None):
     # 注意報・警報データを用いた理由生成
     if(algorithm == 1):
         # 注意報・警報データを取得し、存在するならテキストを生成
-        text = get_warning.get_warning(userdata)
+        warning = get_warning.get_warning(userdata)
+        if(len(warning) > 0):
+            text = "私が住んでいる<住所(都道府県)>で"+ "と".join(warning) + "が\n発令されているので、念のため休ませていただきます。"
 
     # 定型文による理由生成(仮)
     elif(algorithm == 2):

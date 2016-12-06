@@ -41,7 +41,6 @@ def post_RestMessage(text, userdata):
     message = insert_slot(message, userdata)
     # slackに投稿
     post_slack(message, userdata["チャンネル"], userdata["トークン"])
-    post_BotMessage(0,userdata)
 
 def post_BotMessage(rest_flag,userdata):
     # rest_flagが0なら休み,1なら遅刻に対してボットが肯定するメッセージを投稿

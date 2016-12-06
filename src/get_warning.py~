@@ -17,9 +17,8 @@ def get_warning(userdata):
         # 注意報・警報が発令されていない場合は無視
         if("<title>"+address[2] in line and "発表されていません。" not in line):
             warning = line.split(" - ")[1].split("が発表されています")[0].split("、")
-            text = "私が住んでいる<住所(都道府県)>で"+ "と".join(warning) + "が\n発令されているので、念のため休ませていただきます。"
-            # 得られた注意報・警報一覧を含む文章を返す
-            return text
+        # 得られた注意報・警報一覧を返す
+        return warning
 
 
 if(__name__ == "__main__"):
