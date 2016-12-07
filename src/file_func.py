@@ -1,7 +1,7 @@
 import glob
 import os
 import shutil
-
+import subprocess as sp
 def get_prof():
     # initialize
     usr_prof = "../data/user_profile/"
@@ -12,7 +12,7 @@ def get_prof():
         sp.call(cmd) # download "user_prof_org.txt"
         shutil.copyfile(usr_prof + "user_prof_org.txt", usr_prof + "user_prof.txt") # Saving change file -> user_prof.txt
     else: # After second
-        cmd = ["wget", "-O", usr_proef + "user_prof_dl.txt", "url"]
+        cmd = ["wget", "-O", usr_prof + "user_prof_dl.txt", url]
         sp.call(cmd)# download "usr_prof_dl.txt"
         prev_modify = (os.stat(usr_prof + "user_prof_org.txt")).st_mtime
         dl_modify = (os.stat(usr_prof + "user_prof_dl.txt")).st_mtime
@@ -22,7 +22,7 @@ def get_prof():
 
 def get_trig():
     #initialize
-    dirc = "./test/*"
+    dirc = "/home/share/Dropbox/trigger/*"
     lsdir = glob.glob(dirc)
     new_time = 0 #float("inf")
     trigger = ""
@@ -36,8 +36,12 @@ def get_trig():
         file_name = (files.split("/")[-1])
         # If emargency trigger
         if file_name == "emargency_red.txt":
+            for files in lsdir:
+                os.remove(files)
             return("red")
         elif file_name == "emargency_blue.txt":
+            for files in lsdir:
+                os.remove(files)
             return("blue")
         #If normal trigger
         else:
