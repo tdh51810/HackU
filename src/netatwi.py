@@ -2,7 +2,7 @@ import random
 
 def neta():
 
-	tweet = open("reason_from_twitter.txt","r").read()
+	tweet = open("../data/reason_from_twitter.txt","r").read()
 	tweetlist = tweet.split("\n")
 
   #空要素をリストから削除
