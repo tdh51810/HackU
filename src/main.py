@@ -3,6 +3,11 @@ import random
 import get_warning
 import postSlack
 import file_func
+import get_weather
+import my_disease
+import child_disease
+import sinseki
+import netatwi
 
 while True:
     while True:
@@ -31,27 +36,27 @@ while True:
     # 天気を理由にして休む場合
     if(trigger == "weather"):
         # 注意報・警報データを取得し、存在するならテキストを生成
-        text,restext = get_warning.get_warning(userdata)   # slackのチャンネルに送られるテキスト,ユーザへのレスポンステキスト
+        text,restext = get_weather.get_weather(userdata)   # slackのチャンネルに送られるテキスト,ユーザへのレスポンステキスト
         bottext = ""                                       # botが肯定するためのテキスト
 
     # 自分が風邪を引いて休む場合
     elif(trigger == "own_cold"):
-        #text,restext = "チャンネルに送信されるテキスト","ユーザへのレスポンステキスト"
+        #text,restext = my_disease.mydisease(userdata)
         bottext = ""
 
     # 子どもが風邪を引いて休む場合
     elif(trigger == "child_cold"):
-        #text,restext = "風邪を引いたので休みます。",""
+        #text,restext = child_disease.child_disease(userdata)
         bottext = ""
 
     # 親戚の不幸で休む場合
     elif(trigger == "relative"):
-        #text,restext = "親戚が亡くなったので〜",""
+        #text,restext = sinseki.kill()
         bottext = ""
 
     # ネタツイートを引用する場合
     elif(trigger == "twitter"):
-        #text,restext = "ふざけた理由で休みたいので〜",""
+        #text,restext = netatwi.neta()
         bottext = ""
 
 
