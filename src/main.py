@@ -19,12 +19,12 @@ while True:
 
     # 緊急ボタン(赤：休み)
     if(trigger == "red"):
-        text,restext = "一身上の都合により休ませていただきます。",""
+        text,restext = "一身上の都合により休ませていただきます。","正常に送信されました。"  #bttnはエラー文生成無し
         bottext = "了解です！お大事に！"
 
     # 緊急ボタン(青：遅刻)
     if(trigger == "blue"):
-        text,restext = "寝坊してしまい、遅刻します。急いで向かいます。",""
+        text,restext = "寝坊してしまい、遅刻します。急いで向かいます。","正常に送信されました。"  #bttnはエラー文生成無し
         bottext = "了解しました。気をつけてね。"
 
 
@@ -36,22 +36,22 @@ while True:
 
     # 自分が風邪を引いて休む場合
     elif(trigger == "own_cold"):
-        #text,restext = "風邪を引いたので休みます。"
+        #text,restext = "チャンネルに送信されるテキスト","ユーザへのレスポンステキスト"
         bottext = ""
 
     # 子どもが風邪を引いて休む場合
     elif(trigger == "child_cold"):
-        #text,restext = "風邪を引いたので休みます。"
+        #text,restext = "風邪を引いたので休みます。",""
         bottext = ""
 
     # 親戚の不幸で休む場合
     elif(trigger == "relative"):
-        #text,restext = "風邪を引いたので休みます。"
+        #text,restext = "親戚が亡くなったので〜",""
         bottext = ""
 
-    # 自分が風邪を引いてしまった場合
+    # ネタツイートを引用する場合
     elif(trigger == "twitter"):
-        #text,restext = "風邪を引いたので休みます。"
+        #text,restext = "ふざけた理由で休みたいので〜",""
         bottext = ""
 
 
