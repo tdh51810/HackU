@@ -43,13 +43,11 @@ def post_RestMessage(text, userdata):
     post_slack(message, userdata["チャンネル"], userdata["トークン"])
     post_BotMessage(0,userdata)
 
-def post_BotMessage(rest_flag,userdata):
-    # rest_flagが0なら休み,1なら遅刻に対してボットが肯定するメッセージを投稿
-    if(rest_flag == 0):
-        post_slack("了解。気をつけてね。", userdata["チャンネル"], userdata["トークン"], as_user_flag=False)
-    else:
-        post_slack("お大事に！\nゆっくり休んでね！", userdata["チャンネル"], userdata["トークン"], as_user_flag=False)
+def post_BotMessage(bottext,userdata):
+    post_slack(bottext, userdata["チャンネル"], userdata["トークン"], as_user_flag=False)
 
+def post_OwnSlack(responsetext,userdata):
+    post_slack(responsetext, userdata["ユーザid"], userdata["トークン"], as_user_flag=False) #要確認
 
 if(__name__ == "__main__"):
     ####### 投稿用データ(それぞれ仮の値 本来は他の処理で生成する) #######
