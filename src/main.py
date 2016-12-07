@@ -15,11 +15,11 @@ while True:
     # ユーザ情報を読み込む
     userdata = eval(open("../data/user_profile/user_info.txt","r").read())
     
-    text = ""
+    text = None
 
     # 緊急ボタン(赤：休み)
     if(trigger == "red"):
-        text,restext = "一身上の都合により休ませていただきます。"
+        text,restext = "一身上の都合により休ませていただきます。",""
         bottext = "了解です！お大事に！"
 
     # 緊急ボタン(青：遅刻)
@@ -56,7 +56,7 @@ while True:
 
 
     # 理由生成に失敗した場合
-    if(text == ""):
+    if(text == None):
         postSlack.post_OwnSlack(restext,userdata)
 
     # 理由生成に成功した場合
