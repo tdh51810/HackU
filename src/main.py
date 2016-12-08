@@ -11,9 +11,9 @@ import netatwi
 
 while True:
     while True:
-        if file_func.get_trig() == True:
-            # トリガーを取得
-            trigger = file_func.get_trig()
+        trigger = file_func.get_triger
+        if trigger != False:
+            # プロフィールの更新を確認
             file_func.get_prof()
             break
 
