@@ -11,7 +11,9 @@ def get_weather(userdata):
 
     #今日の天気の取得
     today = datetime.date.today()
-    weather = 1#random.randint(1,3)
+    
+    #どの気象状況を理由に選択するか
+    weather = random.randint(1,3)
    
     if(weather == 1):
        weather_text = get_temperture()
@@ -22,10 +24,18 @@ def get_weather(userdata):
     elif(weather == 3):
        weather_text = get_warning()
 
-    print(address[0],weather_text)
-    text = "おはようございます。\n私が住んでいる"+str(address[0])+"で、"+weather_text+"念のため今日は休ませていただきます。"
-    restext = "ここにレスポンスのテキストが入ります。"
-    return [text,restext]
+
+    #気象状況を理由に休めたとき
+    if(weather_text != 0):
+        text = "おはようございます。\n私が住んでいる"+str(address[0])+"で、"+weather_text+"念のため今日は休ませていただきます。"
+        restext = "送信が完了しました。"
+        return [text,restext]
+
+    #気象状況を理由に休めなかったとき
+    elif(weather_text == 0):
+        text = "None"    
+        restext = "今日は気象状況に問題がないので休めません。"
+        return [text,restext]
 
 
 def get_temperture():
@@ -58,6 +68,8 @@ def get_temperture():
       # 住所の気温が記載されている行を見つけたら、その行から気温部分のテキストのみを切り出す
       if("<description>" in line and str(today.day)+"日" in line and "℃" in line):
 
+         line = "<description>08日（木）の天気は曇時々雪、最高気温は-4℃ でしょう。</description>"
+
          if("-" in line):      
             temperture = re.sub("<description>[0-3][0-9]",'',line)     
             temperture = re.sub("[^-\d{1}]?",'',temperture)
@@ -65,14 +77,18 @@ def get_temperture():
          elif("-" not in line):
             temperture = re.sub("<description>[0-3][0-9]",'',line)     
             temperture = re.sub("[^-\d{1}]?",'',temperture)
-              
+             
          if(int(temperture) >= 30):
             weather_text1 = "気温が"+temperture+"度と高温ですので、\n熱中症予防として"
+            return weather_text1
+
          elif(int(temperture) <= 0):
             weather_text1 = "気温が"+temperture+"度と低温ですので、\n凍結での転倒防止として"
+            return weather_text1
+
          elif(int(temperture) < 30 and int(temperture) >0):
-            weather_text1 = "気温が"+temperture+"度と普通ですが、\n今日は、温度差が激しい日とTVで言っていたので、\n"
-         return weather_text1
+            weather_text1 = 0
+            return weather_text1
 
 
 def get_state():
@@ -102,20 +118,22 @@ def get_state():
     for line in xml_state:
       # 住所の天気が記載されている行を見つけたら、その行から天気部分のテキストのみを切り出す
       if("<description>" in line and str(today.day)+"日" in line and "℃" in line):
-        #print(line)
-
         state = re.sub("<description>[0-3][0-9]日（[^\d{1}]）の天気は",'',line)
         state = re.sub("[\d{2}]",'',state)
         state = re.sub("、[^0-9]*",'',state)
-
+      
         if(state == "暴風雪" or state == "雨で暴風を伴う" or state == "雨" or state == "雪"):
           weather_text2 = "今日の天気が"+state+"ということで悪天候なので\n"
+          return weather_text2 
+        
         else:
-          weather_text2 = "今の天気は"+state+"ということで大丈夫なのですが、今朝ご飯粒がお茶椀から綺麗にとれました。\nよって、先人の伝えを信じると雨の恐れがあるので、"
-        return weather_text2 
+          weather_text2 = 0
+          return weather_text2 
+
 
 
 def get_warning():
+   
     # ユーザ情報から住所成分を抽出
     userdata = eval(open("../data/user_profile/user_prof.txt","r").read())
     address = userdata["住所"].split()
@@ -131,13 +149,16 @@ def get_warning():
     warning = []
     for line in xml_warning:
       # 住所の注意報・警報が記載されている行を見つけたら、その行から注意報・警報部分のテキストのみを切り出す
+
       if("<title>"+address[2] in line and "発表されていません。" not in line):
          warning = line.split(" - ")[1].split("が発表されています")[0].split("、")
          weather_text3 = "現在" + "と".join(warning) + "が発令されていますので、\n"
          return weather_text3
+
       elif("<title>"+address[2] in line and "発表されていません。" in line):
-         weather_text3 = "注意報も警報も出ていないのですが、嫌な予感がします。\nよって、"
-         return weather_text3
+         weather_text3 = 0
+         return weather_text3 
+      
 
 
 if(__name__ == "__main__"):
