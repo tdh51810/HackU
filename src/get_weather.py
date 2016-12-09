@@ -12,18 +12,18 @@ def get_weather(userdata):
     #今日の天気の取得
     today = datetime.date.today()
     
+    weather_text = 0
     #どの気象状況を理由に選択するか
-    weather = random.randint(1,3)
-   
-    if(weather == 1):
-       weather_text = get_temperture()
-
-    elif(weather == 2):
-       weather_text = get_state()
-
-    elif(weather == 3):
-       weather_text = get_warning()
-
+    for weather in range(1,4):
+        if(weather == 1):
+            weather_text = get_temperture()
+            break
+        elif(weather == 2):
+            weather_text = get_state()
+            break
+        elif(weather == 3):
+            weather_text = get_warning()
+            break
 
     #気象状況を理由に休めたとき
     if(weather_text != 0):
@@ -33,7 +33,7 @@ def get_weather(userdata):
 
     #気象状況を理由に休めなかったとき
     elif(weather_text == 0):
-        text = "None"    
+        text = None    
         restext = "今日は気象状況に問題がないので休めません。"
         return [text,restext]
 
@@ -67,8 +67,6 @@ def get_temperture():
     for line in xml_temperture:
       # 住所の気温が記載されている行を見つけたら、その行から気温部分のテキストのみを切り出す
       if("<description>" in line and str(today.day)+"日" in line and "℃" in line):
-
-         line = "<description>08日（木）の天気は曇時々雪、最高気温は-4℃ でしょう。</description>"
 
          if("-" in line):      
             temperture = re.sub("<description>[0-3][0-9]",'',line)     
