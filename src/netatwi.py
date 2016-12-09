@@ -10,4 +10,6 @@ def neta():
             break
 
     one_tweet = random.choice(tweetlist)
-    return one_tweet
+    text = one_tweet
+    restext = "送信が完了しました。"
+    return [text,restext]
