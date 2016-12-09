@@ -41,7 +41,6 @@ def post_RestMessage(text, userdata):
     message = insert_slot(message, userdata)
     # slackに投稿
     post_slack(message, userdata["チャンネル"], userdata["トークン"])
-    post_BotMessage(0,userdata)
 
 def post_BotMessage(bottext,userdata):
     post_slack(bottext, userdata["チャンネル"], userdata["トークン"], as_user_flag=False)

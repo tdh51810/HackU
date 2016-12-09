@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
+import time
 import get_warning
 import postSlack
 import file_func
@@ -8,6 +9,7 @@ import my_disease
 import child_disease
 import sinseki
 import netatwi
+
 
 while True:
     while True:
@@ -19,7 +21,6 @@ while True:
 
     # ユーザ情報を読み込む
     userdata = eval(open("../data/user_profile/user_info.txt","r").read())
-    
     text = None
 
     # 緊急ボタン(赤：休み)
@@ -59,7 +60,6 @@ while True:
         #text,restext = netatwi.neta()
         bottext = ""
 
-
     # 理由生成に失敗した場合
     if(text == None):
         postSlack.post_OwnSlack(restext,userdata)
@@ -70,6 +70,7 @@ while True:
         postSlack.post_RestMessage(text, userdata)
 
         # Botが休み・遅刻を肯定するようなメッセージを投稿
+        time.sleep(5)
         postSlack.post_BotMessage(bottext, userdata)
 
         #ユーザのslackにレスポンスを送信
