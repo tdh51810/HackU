@@ -27,7 +27,7 @@ def get_weather(userdata):
 
     #気象状況を理由に休めたとき
     if(weather_text != 0):
-        text = "おはようございます。\n私が住んでいる"+str(address[0])+"で、"+weather_text+"念のため今日は休ませていただきます。"
+        text = "私が住んでいる"+str(address[0])+"で、"+weather_text+"念のため今日は休ませていただきます。"
         restext = "送信が完了しました。"
         return [text,restext]
 
