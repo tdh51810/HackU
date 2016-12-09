@@ -26,8 +26,8 @@ def get_trig():
     lsdir = glob.glob(dirc)
     new_time = 0 #float("inf")
     trigger = ""
-
-
+    if len(lsdir) == 1:
+        print(lsdir)
     if len(lsdir) == 0:
         return(False)
 
@@ -36,12 +36,8 @@ def get_trig():
         file_name = (files.split("/")[-1])
         # If emargency trigger
         if file_name == "emargency_red.txt":
-            for files in lsdir:
-                os.remove(files)
             return("red")
         elif file_name == "emargency_blue.txt":
-            for files in lsdir:
-                os.remove(files)
             return("blue")
         #If normal trigger
         else:
@@ -52,7 +48,13 @@ def get_trig():
                 trigger = files
     with open(trigger, "r") as f:
         f = (f.read()).strip()
-    # Reset trigger
+    return(f) # Return trigger type
+
+
+def del_file():
+    #initialize
+    dirc = "/home/share/Dropbox/trigger/*"
+    lsdir = glob.glob(dirc)
     for files in lsdir:
         os.remove(files)
-    return(f) # Return trigger type
+

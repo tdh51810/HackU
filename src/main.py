@@ -6,17 +6,21 @@ import my_disease
 import child_disease
 import sinseki
 import netatwi
+import time
 
 while True:
+
     while True:
-        trigger = file_func.get_triger
+        time.sleep(1)
+        trigger = file_func.get_trig()
         if trigger != False:
             # プロフィールの更新を確認
             file_func.get_prof()
             break
 
+
     # ユーザ情報を読み込む
-    userdata = eval(open("../data/user_profile/user_info.txt","r").read())
+    userdata = eval(open("../data/user_profile/user_prof.txt","r").read())
     
     text = None
 
@@ -39,7 +43,7 @@ while True:
 
     # 自分が風邪を引いて休む場合
     elif(trigger == "own_cold"):
-        text,restext = my_disease.mydisease(userdata)
+        text,restext = my_disease.my_disease(userdata)
         bottext = "了解です！お大事に！"
 
     # 子どもが風邪を引いて休む場合
@@ -72,3 +76,6 @@ while True:
 
         #ユーザのslackにレスポンスを送信
         postSlack.post_OwnSlack(restext,userdata)
+
+    time.sleep(60)
+    file_func.del_file()
