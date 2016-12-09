@@ -5,7 +5,7 @@ def child_disease(userdata):
     if(userdata["子ども"] != "0"):
         diseases = ["を歯医者に連れていきます","が風邪をひいてしまった","が骨折をしてしまった","が熱を出してしまった","に蕁麻疹が出てしまった","が感染症の疑いがあり病院へ連れていきます"]
         childreason = random.choice(diseases)
-        text = "おはようございます。\n申し訳ないのですが、子供" + childreason + "ので、今日はお休みをいただきます。"
+        text = "子ども" + childreason + "ので、今日はお休みをいただきます。"
         restext = "送信が完了しました。"
         #return [text,restext]
 
