@@ -53,12 +53,12 @@ while True:
 
     # 親戚の不幸で休む場合
     elif(trigger == "relative"):
-        #text,restext = sinseki.kill()
+        text,restext = sinseki.kill()
         bottext = "了解しました。ご愁傷さまです。"
 
     # ネタツイートを引用する場合
     elif(trigger == "twitter"):
-        #text,restext = netatwi.neta()
+        text,restext = netatwi.neta()
         bottext = "頭がおかしくなったのかな？ゆっくり休んでね。"
 
 
@@ -70,6 +70,7 @@ while True:
     else:
         # 整形してSlackに投稿
         postSlack.post_RestMessage(text, userdata)
+        time.sleep(3)
 
         # Botが休み・遅刻を肯定するようなメッセージを投稿
         postSlack.post_BotMessage(bottext, userdata)
@@ -77,5 +78,12 @@ while True:
         #ユーザのslackにレスポンスを送信
         postSlack.post_OwnSlack(restext,userdata)
 
-    time.sleep(60)
+    #time.sleep(30)
+    t = 0
+    while(True):
+        print(10-t)
+        time.sleep(1)
+        t += 1
+        if t == 10:
+            break
     file_func.del_file()

@@ -7,10 +7,10 @@ import glob
 # Slackの指定されたチャンネルにテキストを投稿する関数
 def post_slack(text, channel, token, as_user_flag=True):
     # 自動投稿と明示(テスト用処理、本番では外す)
-    text = text + "(このメッセージは自動投稿です)\n" + "-" * 50
+    #text = text + "(このメッセージは自動投稿です)\n" + "-" * 50
 
     slacker = Slacker(token)
-    slacker.chat.post_message(channel, text, as_user=as_user_flag)
+    slacker.chat.post_message(channel, text, as_user=as_user_flag, username = "さぼたん")
     #print(text)
 
 
