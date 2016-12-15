@@ -81,29 +81,28 @@ def kill():
                         restext = "送信が完了しました。"
                         return [text,restext]
 
+                else :
+                #祖父祖母個別
+                    if int(userdata["祖母"]) >= 1 :
+                        userdata["祖母"] = int(userdata["祖母"]) - 1
+                        userdata["祖母"] = str(userdata["祖母"])
+                        number = 3
+                        updata_prof(userdata)
+                        text = kill_list[number]+"が亡くなったので、本日は休ませていただきます。"
+                        restext = "送信が完了しました。"
+                        return [text,restext]
+
+
+                    elif int(userdata["祖父"]) >= 1 :
+                        userdata["祖父"] = int(userdata["祖父"]) - 1
+                        userdata["祖父"] = str(userdata["祖父"])
+                        number = 2                            updata_prof(userdata)
+                        text = kill_list[number]+"が亡くなったので、本日は休ませていただきます。"
+                        restext = "送信が完了しました。"
+                        return [text,restext]
+
+
                     else :
-                    #祖父祖母個別
-                        if int(userdata["祖母"]) >= 1 :
-                            userdata["祖母"] = int(userdata["祖母"]) - 1
-                            userdata["祖母"] = str(userdata["祖母"])
-                            number = 3
-                            updata_prof(userdata)
-                            text = kill_list[number]+"が亡くなったので、本日は休ませていただきます。"
-                            restext = "送信が完了しました。"
-                            return [text,restext]
-
-
-                        elif int(userdata["祖父"]) >= 1 :
-                            userdata["祖父"] = int(userdata["祖父"]) - 1
-                            userdata["祖父"] = str(userdata["祖父"])
-                            number = 2
-                            updata_prof(userdata)
-                            text = kill_list[number]+"が亡くなったので、本日は休ませていただきます。"
-                            restext = "送信が完了しました。"
-                            return [text,restext]
-
-
-                        else :
                         #父、母をランダムで選ぶ
                             if int(userdata["母親"]) and int(userdata["父親"]) >= 1 :
                                 rand_kill = random.randint(1,2)
