@@ -96,7 +96,8 @@ def kill():
                     elif int(userdata["祖父"]) >= 1 :
                         userdata["祖父"] = int(userdata["祖父"]) - 1
                         userdata["祖父"] = str(userdata["祖父"])
-                        number = 2                            updata_prof(userdata)
+                        number = 2
+                        updata_prof(userdata)
                         text = kill_list[number]+"が亡くなったので、本日は休ませていただきます。"
                         restext = "送信が完了しました。"
                         return [text,restext]
